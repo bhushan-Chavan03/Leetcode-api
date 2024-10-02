@@ -12,10 +12,12 @@ router.get('/:username', async (req, res) => {
         let user = await userModel.findOne({ username });
 
         if (user) {
-            if (user.contestStats) {
+            console.log(user.contestStats);
+            if (user.contestStats && user.contestStats!=null) {
                 return res.json(user.contestStats);
             } else {
                 const userContestRanking = await contestController(username);
+                console.log(userContestRanking)
                 user.contestStats = userContestRanking;
                 await user.save();
                 return res.json(user.contestStats);

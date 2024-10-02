@@ -2,6 +2,7 @@ import express from 'express';
 import contestRoute from './routes/contestRoute.js';
 import noSolvedQuestionsRoute from './routes/noSolvedRoute.js'; 
 import badgesRoute from './routes/badgesRoute.js'
+import homeRouter from './routes/homeRouter.js'
 import mongoose from 'mongoose';
 
 
@@ -17,6 +18,7 @@ mongoose.connect(dbURI)
 
 const app = express();
 
+app.use('/', homeRouter);
 app.use('/contestRating', contestRoute);
 app.use('/noSolvedQuestions', noSolvedQuestionsRoute); 
 app.use('/badges', badgesRoute); 

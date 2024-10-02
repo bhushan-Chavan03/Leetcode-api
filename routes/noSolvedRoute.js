@@ -11,19 +11,19 @@ router.get('/:username', async (req, res) => {
         let user = await userModel.findOne({ username });
 
         if (user) {
-            if (user.problemsStats && user.problemsStats.length!=0) {
+            if (user.problemsStats && user.problemsStats.length != 0) {
                 return res.json(user.problemsStats);
             } else {
-                const userProbelmsSolved = await noSolvedQuestions(username);
-                user.problemsStats = userProbelmsSolved;
+                const userProblemsSolved = await noSolvedQuestions(username);
+                user.problemsStats = userProblemsSolved;
                 await user.save();
                 return res.json(user.problemsStats);
             }
         } else {
-            const userContestRanking = await contestController(username);
+            const userProblemsSolved = await noSolvedQuestions(username); // Correct variable name
             const newUser = new userModel({
                 username,
-                problemsStats: userProbelmsSolved,
+                problemsStats: userProblemsSolved,  // Fixed here
             });
             await newUser.save();
             return res.json(newUser.problemsStats);

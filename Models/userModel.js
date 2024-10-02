@@ -48,11 +48,11 @@ const userSchema = new mongoose.Schema({
     },
     contestStats: {
         type: contestStatsSchema,
-        required: true,
+        required: false,
     },
     problemsStats: {
         type: [problemStatsSchema], 
-        required: true,
+        required: false,
     }
 });
 

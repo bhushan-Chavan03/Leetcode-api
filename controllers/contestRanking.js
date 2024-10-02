@@ -56,6 +56,9 @@ export const contestController = async (username) => {
             }
         );
 
+
+        console.log(response.data);
+
         return response.data.data.userContestRanking;
     } catch (error) {
         console.error('Error fetching contest ranking:', error);
