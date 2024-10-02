@@ -4,9 +4,12 @@ import noSolvedQuestionsRoute from './routes/noSolvedRoute.js';
 import badgesRoute from './routes/badgesRoute.js'
 import homeRouter from './routes/homeRouter.js'
 import mongoose from 'mongoose';
+import 'dotenv/config';
 
 
-const dbURI = 'mongodb+srv://bhushanc2003:gRLsQsztAqbg2sRS@cluster0.zjhd8.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'; 
+
+
+const dbURI = process.env.MONGODB_URI; 
 mongoose.connect(dbURI)
     .then(() => {
         console.log('Connected to MongoDB');
